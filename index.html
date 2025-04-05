@@ -77,8 +77,20 @@
 
         /* Responsive Tableau Embed */
         .tableau-embed {
-            margin-top: 20px;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
             max-width: 100%;
+        }
+
+        .tableau-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Button Styling */
@@ -139,43 +151,34 @@
     <section class="tableau-section" id="tableauSection">
         <h2>Explore Our Tableau Dashboard 🌟</h2>
         <button onclick="toggleTableau()">Show/Hide Tableau 🎉</button>
-        <div id="tableauEmbed" class="tableau-embed">
-            <!-- Your Tableau Public Embed Code -->
-            <div class='tableauPlaceholder' id='viz1743768643977' style='position: relative'>
-                <noscript>
-                    <a href='#'>
-                        <img alt='Dashboard 1 ' src='https://public.tableau.com/static/images/Bo/Book1_17437684944010/Dashboard1/1_rss.png' style='border: none' />
-                    </a>
-                </noscript>
-                <object class='tableauViz' style='display:none;'>
-                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                    <param name='embed_code_version' value='3' />
-                    <param name='site_root' value='' />
-                    <param name='name' value='Book1_17437684944010/Dashboard1' />
-                    <param name='tabs' value='no' />
-                    <param name='toolbar' value='yes' />
-                    <param name='static_image' value='https://public.tableau.com/static/images/Bo/Book1_17437684944010/Dashboard1/1.png' />
-                    <param name='animate_transition' value='yes' />
-                    <param name='display_static_image' value='yes' />
-                    <param name='display_spinner' value='yes' />
-                    <param name='display_overlay' value='yes' />
-                    <param name='display_count' value='yes' />
-                    <param name='language' value='en-US' />
-                </object>
-            </div>
-            <script type='text/javascript'>
-                var divElement = document.getElementById('viz1743768643977');
-                var vizElement = divElement.getElementsByTagName('object')[0];
-                if ( divElement.offsetWidth > 800 ) {
-                    vizElement.style.minWidth='420px';
-                    vizElement.style.maxWidth='650px';
-                    vizElement.style.width='100%';
-                    vizElement.style.minHeight='587px';
-                    vizElement.style.maxHeight='887px';
-                    vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
-                } else if ( divElement.offsetWidth > 500 ) {
-                    vizElement.style.minWidth='420px';
-                    vizElement.style.maxWidth='650px';
-                    vizElement.style.width='100%';
-                    vizElement.style.minHeight='587px';
-                    vizElement.style.max
+        <div id="tableauEmbed" class="tableau-embed" style="margin-top: 20px;">
+            <!-- Your Tableau Dashboard with iframe -->
+            <iframe src="https://public.tableau.com/views/Book1_17437684944010/Dashboard1?:embed=y&:showVizHome=n&:display_count=n&:origin=viz_share_link" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Data Analytics Hub | Made with 💖 by Grok</p>
+    </footer>
+
+    <!-- JavaScript for Animation and Interactivity -->
+    <script>
+        // Fade-in animation for Tableau section on page load
+        window.onload = function() {
+            const tableauSection = document.getElementById('tableauSection');
+            tableauSection.classList.add('visible');
+        };
+
+        // Toggle Tableau visibility
+        function toggleTableau() {
+            const tableauEmbed = document.getElementById('tableauEmbed');
+            if (tableauEmbed.style.display === 'none') {
+                tableauEmbed.style.display = 'block';
+            } else {
+                tableauEmbed.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
